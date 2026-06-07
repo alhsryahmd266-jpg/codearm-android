@@ -46,9 +46,9 @@ val TextSecondary = Color(0xFF8B949E)
 
 enum class Tool(val label: String, val icon: @Composable () -> Unit) {
     HASH("هاش SHA-256", { Icon(Icons.Default.Lock, contentDescription = null, tint = PrimaryBlue) }),
-    BASE64("Base64", { Icon(Icons.Default.Code, contentDescription = null, tint = AccentGreen) }),
-    PASS("كلمة مرور", { Icon(Icons.Default.Security, contentDescription = null, tint = AccentOrange) }),
-    ASCII("ASCII / Unicode", { Icon(Icons.Default.Translate, contentDescription = null, tint = Color(0xFFD2A8FF)) }),
+    BASE64("Base64", { Icon(Icons.Default.Build, contentDescription = null, tint = AccentGreen) }),
+    PASS("كلمة مرور", { Icon(Icons.Default.Lock, contentDescription = null, tint = AccentOrange) }),
+    ASCII("ASCII / Unicode", { Icon(Icons.Default.Info, contentDescription = null, tint = Color(0xFFD2A8FF)) }),
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -186,7 +186,7 @@ fun OutputBox(label: String, value: String) {
                         val clip = android.content.ClipData.newPlainText("result", value)
                         clipboard.setPrimaryClip(clip)
                     }) {
-                        Icon(Icons.Default.ContentCopy, contentDescription = "نسخ", tint = TextSecondary, modifier = Modifier.size(18.dp))
+                        Icon(Icons.Default.Share, contentDescription = "نسخ", tint = TextSecondary, modifier = Modifier.size(18.dp))
                     }
                 }
             }
