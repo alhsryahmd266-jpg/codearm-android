@@ -1,1 +1,6 @@
 -keep class com.codearm.app.** { *; }
+-dontwarn okhttp3.**
+-keep class okhttp3.** { *; }
+-keepnames class okhttp3.internal.publicsuffix.PublicSuffixDatabase
+-dontwarn org.codehaus.mojo.animal_sniffer.*
+-dontwarn javax.annotation.**
