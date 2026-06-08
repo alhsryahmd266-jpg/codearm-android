@@ -27,9 +27,10 @@ object ApiClient {
         .build()
 
     fun stream(
-        messages: List<Message>,
+        messages: List<ChatMessage>,
         mode: String,
         onToken: (String) -> Unit,
+        onThink: (String) -> Unit = {},
         onDone: () -> Unit,
         onError: (String) -> Unit
     ): Call {
@@ -69,9 +70,11 @@ object ApiClient {
                             if (json == "[DONE]" || json.isEmpty()) continue
                             runCatching {
                                 val obj = JSONObject(json)
-                                val token = obj.optString("token", "")
-                                val done = obj.optBoolean("done", false)
-                                if (token.isNotEmpty()) onToken(token)
+                                val token   = obj.optString("token", "")
+                                val thought = obj.optString("thought", "")
+                                val done    = obj.optBoolean("done", false)
+                                if (thought.isNotEmpty()) onThink(thought)
+                                if (token.isNotEmpty())   onToken(token)
                                 if (done) return
                             }
                         }
